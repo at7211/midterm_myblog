@@ -1,0 +1,25 @@
+header:hover .timingLogoHover{
+  right: 50%;
+  opacity: 0;
+}
+header:hover .nameHover{
+  left: 50%;
+  opacity: 0;
+}
+header:hover .hrHover {
+  transform: rotate(270deg);
+}
+header:hover .arrowHover{
+  top: 185px;
+  opacity: 1;
+}
+header:hover .hrturnHover  {
+  transform: rotate(-270deg);
+}
+
+header:hover .clickHover{
+  animation-name: appear;
+  animation-duration: 2s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}

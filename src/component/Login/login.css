@@ -1,0 +1,110 @@
+.login__wrapper {
+  font-family: "Proxima";
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container {
+  margin:150px auto;
+  padding:50px 0px;
+  justify-content:center;
+  width:500px;
+  display:flex;
+  background-color: white;
+  box-shadow: 0 10px 21px #e7eeef;
+}
+
+#login {
+  color: #515a5f;
+  padding-bottom: 22px;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.77px;
+  line-height: 28px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+.control__input {
+  text-align:left;
+
+}
+
+login__label {
+  color: #47505E;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 29px;
+  letter-spacing: 0.61px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+input[name="username"], input[name="password"], input[name="nickname"] {
+  background-color: rgb(250, 255, 189) !important;
+  margin-bottom:30px;
+  margin-top:10px;
+  width:300px;
+  height:25px;
+  border: 0;
+  box-shadow: 0px 1px 1px 0px #E6E9EC;
+}
+
+.login__submit {
+  display:none;
+}
+
+.login__button {
+  cursor: pointer;
+  margin:10px auto;
+  width:100px;
+  padding:15px 0;
+  text-align: center;
+  justify-content: center;
+  color:white;
+  background:#2057a8;
+  border-radius: 50px;
+  display:inline-flex;
+  font-weight: 600;
+  font-size:13px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+/* for index.php */
+
+
+/* .head {
+  margin:100px auto;
+  width:600px;
+  font-size: 16px;
+  color: rgba(0,0,0,.68);
+  font-weight: 600;
+  font-family: sans-serif;
+  display:flex;
+  justify-content: space-between;
+}
+
+.content {
+  margin:100px auto;
+  padding:10px;
+  width:600px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.03);
+  background-color: white;
+  border-radius: 3px;
+  display:flex;
+  text-align: left；
+
+}
+
+.comment__list{
+  background-color:#fafafa;
+} */
