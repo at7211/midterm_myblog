@@ -14,11 +14,10 @@ function Login({
 } : props) {
   const [ account, setAccount ] = useState('');
   const [ password, setPassword]  = useState('');
-
-  console.log('accessToken', accessToken);
+  const newAccessToken = accessToken[Math.floor(Math.random()*3)]
 
   function submit(loginData) {
-    if(loginData.Verification !== accessToken) alert('驗證碼打錯了啦幹！')
+    if(loginData.Verification !== newAccessToken) alert('驗證碼打錯了啦幹！')
     if(loginData.username !== account ||loginData.password !== account ) alert("wrong account or password!")
   }
 
@@ -65,7 +64,7 @@ function Login({
             className="verify__width"
             component={TextInput} />
           </div>
-          <h1 className="verify__h1">{accessToken}</h1>
+          <h1 className="verify__h1">{newAccessToken}</h1>
         </div>
         <button className="login__button" type="submit" name='login__submit' >login</button>
       </form>
