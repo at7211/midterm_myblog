@@ -7,11 +7,17 @@ import { LOGIN_FORM } from '../../share/form.js'
 import TextInput from './TextInput';
 import './login.css';
 
+
+
 function Login({
   handleSubmit,
 } : props) {
-  const [account, setAccount]=useState('');
-  const [password, setPassword]=useState('');
+  const [ account, setAccount ] = useState('');
+  const [ password, setPassword]  = useState('');
+
+  function submit(loginData) {
+    if(loginData.username !== account ||loginData.password !== account ) alert("wrong account or password!")
+  }
 
   useEffect(() => {
     return () => {
@@ -27,7 +33,7 @@ function Login({
 
   return(
     <div className="login__wrapper">
-      <form className="login__form" onSubmit={console.log('test')}>
+      <form className="login__form" onSubmit={handleSubmit(d => submit(d))}>
         <p id="login">Log In to Myblog</p>
         <div className="control__input">
           <label className="login__label">username:</label>
@@ -46,10 +52,7 @@ function Login({
            type="password"
            component={TextInput} />
         </div>
-        <div className="login__button">Log In</div>
-        <div className="login__submit">
-          <button type="submit" name='login__submit' />
-        </div>
+        <button className="login__button" type="submit" name='login__submit' >login</button>
       </form>
     </div>
   )
