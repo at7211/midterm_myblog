@@ -8,8 +8,6 @@ import { LOGIN_FORM } from '../../share/form.js'
 import TextInput from './TextInput';
 import './login.css';
 
-
-
 function Login({
   handleSubmit,
   accessToken
@@ -20,6 +18,7 @@ function Login({
   console.log('accessToken', accessToken);
 
   function submit(loginData) {
+    if(loginData.Verification !== accessToken) alert('驗證碼打錯了啦幹！')
     if(loginData.username !== account ||loginData.password !== account ) alert("wrong account or password!")
   }
 
@@ -56,6 +55,18 @@ function Login({
            type="password"
            component={TextInput} />
         </div>
+        <div className="control__input login__verify">
+          <div>
+            <label className="login__label">verify code:</label>
+            <br/>
+            <Field
+            name="Verification"
+            placeholder="Verification"
+            className="verify__width"
+            component={TextInput} />
+          </div>
+          <h1 className="verify__h1">{accessToken}</h1>
+        </div>
         <button className="login__button" type="submit" name='login__submit' >login</button>
       </form>
     </div>
@@ -64,10 +75,9 @@ function Login({
 
 const reduxHook = connect(
   state => ({
-    accessToken: state
+    accessToken: state.Member.accessToken
   }),
 );
-
 
 const formHook = reduxForm({
   form: LOGIN_FORM,
@@ -77,4 +87,4 @@ const formHook = reduxForm({
   }
 })
 
-export default formHook(Login);
+export default formHook(reduxHook(Login));

@@ -76,7 +76,21 @@ input {
   font-weight: 600;
   font-size:13px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
+.login__verify {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.verify__width {
+  width: 150px;
+}
+
+.verify__h1 {
+  width: 100%;
+  text-align: center;
 }
 
 /* for index.php */
