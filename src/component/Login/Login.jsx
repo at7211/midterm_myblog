@@ -3,6 +3,7 @@ import {
   Field,
   reduxForm,
 } from 'redux-form';
+import { connect } from 'react-redux';
 import { LOGIN_FORM } from '../../share/form.js'
 import TextInput from './TextInput';
 import './login.css';
@@ -11,9 +12,12 @@ import './login.css';
 
 function Login({
   handleSubmit,
+  accessToken
 } : props) {
   const [ account, setAccount ] = useState('');
   const [ password, setPassword]  = useState('');
+
+  console.log('accessToken', accessToken);
 
   function submit(loginData) {
     if(loginData.username !== account ||loginData.password !== account ) alert("wrong account or password!")
@@ -57,6 +61,13 @@ function Login({
     </div>
   )
 }
+
+const reduxHook = connect(
+  state => ({
+    accessToken: state
+  }),
+);
+
 
 const formHook = reduxForm({
   form: LOGIN_FORM,

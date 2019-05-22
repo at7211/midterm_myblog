@@ -1,5 +1,3 @@
-// @flow
-
 import {
   STORE_MEMBER_ACCESS_TOKEN,
   REMOVE_MEMBER_ACCESS_TOKEN,
