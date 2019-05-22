@@ -7,6 +7,8 @@ import Articles from './component/Articles/Articles';
 import Footer from './component/Footer/Footer';
 import Login from './component/Login/Login.jsx';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Provider } from 'react-redux';
+
 
 const styles = {
   wrapper: {
@@ -17,21 +19,25 @@ const styles = {
   },
 }
 
-function App() {
+function App({
+  store,
+}: props) {
   return (
     <div style={styles.wrapper}>
-      <BrowserRouter>
-        <Nav />
-        <Switch>
-          <Route exact path ="/" component={Main} />
-          <Route exact path ="/about" component={About} />
-          <Route exact path ="/collection" component={Collection} />
-          <Route exact path ="/articles" component={Articles} />
-          <Route path ="/articles/:id" component={Articles} />
-          <Route path ="/login" component={Login} />
-        </Switch>
-        <Footer />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Nav />
+          <Switch>
+            <Route exact path ="/" component={Main} />
+            <Route exact path ="/about" component={About} />
+            <Route exact path ="/collection" component={Collection} />
+            <Route exact path ="/articles" component={Articles} />
+            <Route path ="/articles/:id" component={Articles} />
+            <Route path ="/login" component={Login} />
+          </Switch>
+          <Footer />
+        </BrowserRouter>
+      </Provider>
     </div>
   );
 }

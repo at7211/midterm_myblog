@@ -39,7 +39,7 @@
 
 }
 
-login__label {
+.login__label {
   color: #47505E;
   font-size: 13px;
   font-weight: 400;
@@ -48,7 +48,7 @@ login__label {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-input[name="username"], input[name="password"], input[name="nickname"] {
+input {
   background-color: rgb(250, 255, 189) !important;
   margin-bottom:30px;
   margin-top:10px;

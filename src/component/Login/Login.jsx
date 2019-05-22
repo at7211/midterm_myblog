@@ -1,45 +1,66 @@
 import React, { useState, useEffect } from 'react';
+import {
+  Field,
+  reduxForm,
+} from 'redux-form';
+import { LOGIN_FORM } from '../../share/form.js'
+import TextInput from './TextInput';
 import './login.css';
 
-function Login(){
+function Login({
+  handleSubmit,
+} : props) {
   const [account, setAccount]=useState('');
   const [password, setPassword]=useState('');
 
   useEffect(() => {
     return () => {
-    fetch("http://localhost:3001/api/videos")
+    fetch("http://localhost:3001/api/user")
       .then(res => res.json())
       .then(data => {
         console.log("data: ", data)
         setAccount(data[0].account)
         setPassword(data[0].password)
-
       })
     };
   })
 
   return(
     <div className="login__wrapper">
-      <form method='POST' className="login__form">
+      <form className="login__form" onSubmit={console.log('test')}>
         <p id="login">Log In to Myblog</p>
         <div className="control__input">
           <label className="login__label">username:</label>
           <br/>
-          <input name="username" /></div>
+          <Field
+           name="username"
+           placeholder="your account"
+           component={TextInput} />
+         </div>
         <div className="control__input">
           <label className="login__label">password:</label>
           <br/>
-          <input name='password' type="password" /></div>
+          <Field
+           name="password"
+           placeholder="your password"
+           type="password"
+           component={TextInput} />
+        </div>
         <div className="login__button">Log In</div>
         <div className="login__submit">
-          <input type="submit" name='login' value="Login"/>
-        </div>
-        <div className="create__account">
-          <a href="register.php">No account? Creat one!</a>
+          <button type="submit" name='login__submit' />
         </div>
       </form>
     </div>
   )
 }
 
-export default Login;
+const formHook = reduxForm({
+  form: LOGIN_FORM,
+  initialValue: {
+    username: '',
+    password: '',
+  }
+})
+
+export default formHook(Login);
