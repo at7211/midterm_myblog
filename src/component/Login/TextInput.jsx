@@ -11,14 +11,12 @@ function TextInput({
   className,
 }) {
   return (
-    <>
       <input
         type={type}
         value={value}
         className={className}
         placeholder={placeholder}
         onChange={onChange} />
-    </>
   )
 }
 

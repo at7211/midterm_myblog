@@ -29,15 +29,14 @@ let video = new Video(
 video.save()
     .then(() => console.log('video', video))
 
-let user = new User(
-  {
-    account: 'at7211',
-    password: 'at0912487872',
-  }
-);
-user.save()
-    .then(() => console.log('user', user))
-
+// let user = new User(
+//   {
+//     account: 'at7211',
+//     password: 'at0912487872',
+//   }
+// );
+// user.save()
+//     .then(() => console.log('user', user))
 
 db.on('error', error => {
   console.log(error)

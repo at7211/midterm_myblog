@@ -133,7 +133,7 @@ hr {
 .click {
     position: absolute;
     left: 50%;
-    transform: translateX(-65%);
+    transform: translateX(-50%);
     top: 80%;
     font-size: 24px;
     text-decoration: none;
