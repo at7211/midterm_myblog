@@ -1,6 +1,7 @@
 import {
   STORE_MEMBER_ACCESS_TOKEN,
   REMOVE_MEMBER_ACCESS_TOKEN,
+  STORE_REGISTER_INFO,
 } from '../actions/Member.js';
 
 export default (state = {
@@ -18,6 +19,15 @@ export default (state = {
       return {
         ...state,
         accessToken: null,
+      };
+    }
+
+    case STORE_REGISTER_INFO: {
+      console.log('-----')
+      return {
+        ...state,
+        account: action.account,
+        password: action.password,
       };
     }
 

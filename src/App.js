@@ -6,6 +6,7 @@ import Collection from './component/Collection/Collection';
 import Articles from './component/Articles/Articles';
 import Footer from './component/Footer/Footer';
 import Login from './component/Login/Login.jsx';
+import Register from './component/Register/Register.jsx';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider } from 'react-redux';
 
@@ -34,6 +35,7 @@ function App({
             <Route exact path ="/articles" component={Articles} />
             <Route path ="/articles/:id" component={Articles} />
             <Route path ="/login" component={Login} />
+            <Route path ="/register" component={Register} />
           </Switch>
           <Footer />
         </BrowserRouter>
