@@ -27,7 +27,7 @@ function Register({
   return(
     <div className="login__wrapper">
       <form className="login__form" onSubmit={handleSubmit(d => submit(d))}>
-        <p id="login">Log In to Myblog</p>
+        <p id="login">Register</p>
         <div className="control__input">
           <label className="login__label">username:</label>
           <br/>
