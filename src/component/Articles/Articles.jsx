@@ -38,7 +38,7 @@ class Articles extends PureComponent {
   componentDidMount(){
     this.node.scrollIntoView();
 
-    fetch("http://localhost:3001/api/articles")
+    fetch("http://localhost:3001/api/user/articles")
       .then(res => res.json())
       .then(data => {
         console.log("data: ", data)
@@ -46,29 +46,6 @@ class Articles extends PureComponent {
           articles: data,
         })
       })
-  }
-
-  componentDidUpdate(){
-    fetch('/api/counters')
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-          counters: json
-        });
-      });
-  }
-
-  newCounter() {
-    fetch('/api/counters', { method: 'POST' })
-      .then(res => res.json())
-      .then(json => {
-        let data = this.state.counters;
-        data.push(json);
-
-        this.setState({
-          counters: data
-        });
-      });
   }
 
   postSelectedHandler = id => {

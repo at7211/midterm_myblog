@@ -4,7 +4,6 @@ function TextInput({
   placeholder,
   type,
   input: {
-    name,
     onChange,
     value,
   },
