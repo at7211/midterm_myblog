@@ -8,30 +8,30 @@
 // import TextInput from './TextInput';
 // import './login.css';
 
-// // function submit(loginData) {
-// //   if (loginData.Verification !== newAccessToken) alert('驗證碼打錯了啦幹！')
-// //   if (loginData.username !== account ||loginData.password !== account ) alert("wrong account or password!")
-// // }
+// function submit(loginData) {
+//   if (loginData.Verification !== newAccessToken) alert('驗證碼打錯了啦幹！')
+//   if (loginData.username !== account ||loginData.password !== account ) alert("wrong account or password!")
+// }
 
 // function Login({
 //   handleSubmit,
 //   accessToken
-// } : props) {
-//   // const [ account, setAccount ] = useState('');
-//   // const [ password, setPassword ]  = useState('');
-//   // const newAccessToken = accessToken[Math.floor(Math.random()*3)]
+// } : Props) {
+//   const [ account, setAccount ] = useState('');
+//   const [ password, setPassword ]  = useState('');
+//   const newAccessToken = accessToken[Math.floor(Math.random()*3)]
 
-//   // useEffect(() => {
-//   //   return () => {
-//   //     fetch("http://localhost:3001/api/user")
-//   //       .then(res => res.json())
-//   //       .then(data => {
-//   //         console.log("data: ", data)
-//   //         setAccount(data[0].account)
-//   //         setPassword(data[0].password)
-//   //       })
-//   //   };
-//   // })
+//   useEffect(() => {
+//     return () => {
+//       fetch("http://localhost:3001/api/user")
+//         .then(res => res.json())
+//         .then(data => {
+//           console.log("data: ", data)
+//           setAccount(data[0].account)
+//           setPassword(data[0].password)
+//         })
+//     };
+//   })
 
 //   return(
 //     <div className="login__wrapper">

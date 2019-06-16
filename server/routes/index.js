@@ -1,10 +1,9 @@
 const express = require('express');
-const user = require('./user');
-const jwtAuth = require('./jwt');
-// 注册路由
+const articles = require('./articles');
+const videos = require('./videos');
+
 const router = express.Router();
-// 所有请求过来都会进行身份验证
-// router.use(jwtAuth);
+
 // 路由中间件
 router.use((req, res, next) => {
   // 任何路由信息都会执行这里面的语句
@@ -13,7 +12,8 @@ router.use((req, res, next) => {
   next();
 });
 
-router.use('/user', user);
+router.use('/articles', articles);
+router.use('/videos', videos);
 // 處理 404
 router.use((req, res, next) => {
   var err = new Error('Not Found');

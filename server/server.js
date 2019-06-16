@@ -3,7 +3,8 @@ const path = require('path');
 const mongoose = require('./db/config/mongoose'); // 連接 mongodb 資料庫
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-const router = require('./routes/index.js');
+const user = require('./routes/user');
+const router = require('./routes/index');
 const cors = require('cors');
 
 const app = express();
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use('/api', router); //添加router中间件
+app.use('/admin', user);
 
 // let videoArray = []
 
@@ -30,8 +32,6 @@ app.use('/api', router); //添加router中间件
 //       videoArray.push(...items)
 //     })
 // })
-
-
 
 // let video = new Video(
 // {  id: 1,
@@ -52,18 +52,6 @@ app.use('/api', router); //添加router中间件
 // db.on('error', error => {
 //   console.log(error)
 // })
-
-// 获取用户列表
-// router.get('/list', (req, res) => {
-//   User.find({}, (err, data) => {
-//     if (err) next(err);
-//     res.json({
-//       code: 0,
-//       message: '',
-//       data
-//     });
-//   });
-// });
 
 app.listen(port,() => {
   console.log(`server on ${port}`)

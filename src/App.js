@@ -5,8 +5,8 @@ import About from './component/About/About';
 import Collection from './component/Collection/Collection';
 import Articles from './component/Articles/Articles';
 import Footer from './component/Footer/Footer';
-import Login from './component/Login/Login.jsx';
-import Register from './component/Register/Register.jsx';
+import Login from './component/Login/Login';
+import Register from './component/Register/Register';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider } from 'react-redux';
 

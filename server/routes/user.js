@@ -3,9 +3,11 @@ const jwt = require('jsonwebtoken');
 const { body, oneOf, validationResult } = require('express-validator/check');
 const User = require('../db/models/user'); // 引入模型
 const { MD5_SUFFIX, md5, secretKey } = require('../constant/constant');
+const jwtAuth = require('./jwt');
 
 const router = express.Router();
 
+router.use(jwtAuth);
 
 // let videoArray = []
 
@@ -28,32 +30,6 @@ router.get('/user', async (req, res) => {
     });
 })
 
-router.get('/', (req, res) => {
-  //不知道為什麼失敗ＱＡＱ
-  Video.find()
-    .exec()
-    .then(docs => {
-      console.log('docs', docs)
-      res.json(docs)
-    });
-})
-
-router.get('/articles', (req, res) =>{
-  console.log('test')
-  res.json([{
-      id: 0,
-      title: '前端好難',
-      content: '嗚嗚嗚真的好難TAT',
-  }, {
-      id: 1,
-      title: '後端好難',
-      content: '嗚嗚嗚真的好難TAT',
-  }, {
-      id: 2,
-      title: '學完 redux 後發現還有 graphql',
-      content: 'asd',
-  }])
-});
 
 // 獲取用戶列表
 router.get('/list', (req, res) => {

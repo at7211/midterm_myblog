@@ -23,13 +23,12 @@ export default (state = {
     }
 
     case STORE_REGISTER_INFO: {
-      console.log('--reducer--')
+      console.log('-----')
       return {
         ...state,
         account: action.account,
         password: action.password,
       };
-
     }
 
     default:

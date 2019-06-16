@@ -38,7 +38,7 @@ class Articles extends PureComponent {
   componentDidMount(){
     this.node.scrollIntoView();
 
-    fetch("http://localhost:3001/api/user/articles")
+    fetch("http://localhost:3001/api/articles")
       .then(res => res.json())
       .then(data => {
         console.log("data: ", data)
