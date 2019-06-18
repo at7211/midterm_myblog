@@ -3,9 +3,9 @@ const { secretKey } = require('../constant/constant');
 
 const jwtAuth = expressJwt({
   secret: secretKey,
-  credentialsRequired: true // 设置为false就不进行校验了，游客也可以访问
+  credentialsRequired: true // 設置為 false 就不進行校驗了，遊客也可以訪問
 }).unless({
-  path: ['/api/user/login', '/api/user/register']
+  path: ['/admin/login', '/admin/register']
 });
 
 module.exports = jwtAuth;

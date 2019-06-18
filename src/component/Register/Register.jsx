@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { bindActionCreators } from 'redux';
 import {
   Field,
@@ -14,7 +14,7 @@ function Register({
   handleSubmit,
   accessToken,
   storeRegisterInfo,
-} : props) {
+} : Props) {
   const newAccessToken = accessToken[Math.floor(Math.random()*3)]
 
   function submit(regisData) {
@@ -33,7 +33,8 @@ function Register({
         password: regisData.register__password,
       })
     })
-      .then(res => res.json(res))
+      .then(res => res.json())
+      .catch(err => console.log('error: ', err))
       .then(res => console.log('res', res))
   }
 
@@ -70,7 +71,7 @@ function Register({
           </div>
           <h1 className="verify__h1">{newAccessToken}</h1>
         </div>
-        <button className="login__button" type="submit" name='login__submit' >login</button>
+        <button className="login__button" type="submit" name='login__submit' >register</button>
       </form>
     </div>
   )

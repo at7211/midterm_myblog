@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const config = require('./config');
 
 module.exports = () => {
-  //連接mongodb數據庫
+  // 連接mongodb數據庫
   mongoose.connect(config.mongodb, { useNewUrlParser: true });
   // 實例化連接對象
   let db = mongoose.connection;

@@ -15,7 +15,7 @@ router.get('/', (req, res) =>{
   }, {
       id: 2,
       title: '學完 redux 後發現還有 graphql',
-      content: 'asd',
+      content: '工程師就是永遠學不完 ＱＡＱ',
   }])
 });
 

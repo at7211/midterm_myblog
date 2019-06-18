@@ -6,11 +6,11 @@ const mongoose = require('../db/config/mongoose'); // 連接 mongodb 資料庫
 
 let newObjectId = mongodb.ObjectId()
 let db = mongoose()
+let videoArray = []
+
 db.on('error', error => {
   console.log(error)
 })
-
-let videoArray = []
 
 db.once('open', async () => {
   //應該有更好的寫法，求指教
@@ -22,20 +22,24 @@ db.once('open', async () => {
 
 router.get('/', (req, res) => {
   res.json(videoArray)
-  // db.collection('videos').find({})
-  //   .then(items => {
-  //     res.json(items)
-  //   })
-  //   .then(res => console.log('video', res));
-  // Video.find()
-  //   .exec()
-  //   .then(items => {
-  //     res.json(items)
-  //   })
-  //   .then(res => console.log('video', res));
-  // await res.json(videos)
-  //   .then(res => console.log('videos!!', res))
 });
+
+module.exports = router
+
+// db.collection('videos').find({})
+//   .then(items => {
+//     res.json(items)
+//   })
+//   .then(res => console.log('video', res));
+// Video.find()
+//   .exec()
+//   .then(items => {
+//     res.json(items)
+//   })
+//   .then(res => console.log('video', res));
+// await res.json(videos)
+//   .then(res => console.log('videos!!', res))
+
 // {
 //     _id: '5cd0823b1c9d4400005680eb',
 //     id: 0,
@@ -60,5 +64,3 @@ router.get('/', (req, res) => {
 //   video.save()
 //     .then(res => console.log('video', res))
 // })
-
-module.exports = router

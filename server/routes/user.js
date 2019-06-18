@@ -4,32 +4,9 @@ const { body, oneOf, validationResult } = require('express-validator/check');
 const User = require('../db/models/user'); // 引入模型
 const { MD5_SUFFIX, md5, secretKey } = require('../constant/constant');
 const jwtAuth = require('./jwt');
-
 const router = express.Router();
 
-router.use(jwtAuth);
-
-// let videoArray = []
-
-// db.once('open', async () => {
-//   //應該有更好的寫法，求指教
-// 	await console.log('db connect')
-// 	await db.collection('video').find().toArray(function (err, items) {
-//       videoArray.push(...items)
-//     })
-// })
-// router.get('/videos', async (req, res) => {
-//   res.json(videoArray)
-// })
-
-router.get('/user', async (req, res) => {
-  User.find()
-    .exec()
-    .then(items => {
-      res.json(items)
-    });
-})
-
+// router.use(jwtAuth);
 
 // 獲取用戶列表
 router.get('/list', (req, res) => {
@@ -43,20 +20,26 @@ router.get('/list', (req, res) => {
   });
 });
 
-//用戶登入
+// router.post('/login', (req, res) => {
+//   if(req.body.account === 'at7211' && req.body.password === 'at0912487872'){
+//     console.log('login success!!!')
+//   }
+// })
+
 router.post(
   '/login',
   [
     [
-      body('username')
+      body('account')
         .isString()
-        .withMessage('username 類型不正確'),
+        .withMessage('account 類型不正確'),
       body('password')
         .isString()
         .withMessage('password 類型不正確')
     ]
   ],
   (req, res) => {
+    console.log('req.body', req.body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({
@@ -69,11 +52,11 @@ router.post(
       });
     }
     const tokenObj = {
-      username: req.body.username
+      account: req.body.account
     };
     User.findOne(
       {
-        username: req.body.username
+        account: req.body.account
       },
       (err, user) => {
         if (err) {
@@ -82,7 +65,7 @@ router.post(
           User.findOne(
             {
               //判斷密碼是否正確
-              username: req.body.username,
+              account: req.body.account,
               password: md5(req.body.password + MD5_SUFFIX)
             },
             (err, user) => {
@@ -116,12 +99,10 @@ router.post(
   }
 );
 
-// 用户注册接口
 router.post(
   '/register',
   [
-    body('username').isLength({ min: 6 }),
-    body('email').isEmail(),
+    body('account').isLength({ min: 6 }),
     body('password').isLength({ min: 6 })
   ],
   (req, res) => {
@@ -141,7 +122,7 @@ router.post(
     User.findOne(
       {
         //查找是否存在
-        username: req.body.username
+        account: req.body.account
       },
       (err, user) => {
         if (err) {
@@ -149,9 +130,8 @@ router.post(
         } else {
           if (user === null) {
             const insertObj = {
-              username: req.body.username,
+              account: req.body.account,
               password: md5(req.body.password + MD5_SUFFIX),
-              email: req.body.email,
               role: 10.0
             };
             const newUser = new User(insertObj);

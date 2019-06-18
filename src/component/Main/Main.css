@@ -6,7 +6,6 @@ html, body {
 
 .main {
   width: 100%;
-  /* font-family: "Noto Sans TC", 微軟正黑體; */
   scroll-behavior: smooth;
   position: relative;
   width: 100%;

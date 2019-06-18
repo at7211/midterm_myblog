@@ -22,7 +22,7 @@ const styles = {
 
 function App({
   store,
-}: props) {
+}: Props) {
   return (
     <div style={styles.wrapper}>
       <Provider store={store}>
