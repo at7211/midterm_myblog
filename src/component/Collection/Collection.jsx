@@ -166,9 +166,11 @@ class Collection extends PureComponent {
         }
       })
       .then(() => {
-        this.setState({
-          video: this.state.items ? this.state.items[0].link : ''
-        })
+        if(this._isMounted){
+          this.setState({
+            video: this.state.items ? this.state.items[0].link : ''
+          })
+        }
       });
   }
 
@@ -176,19 +178,19 @@ class Collection extends PureComponent {
     window.onscroll = () => {
       // 應該有更好的寫法 ＱＡＱ
       let k = 0
-      console.log('window.pageYOffset ', window.pageYOffset )
-
       for( let i = 0; i < this.state.items.length; i++){
         if (window.pageYOffset > 500*i) {
           k = i
         }
       }
-      this.setState({
-        video: this.state.items[k].link,
-      })
+      if(this._isMounted){
+        this.setState({
+          video: this.state.items[k].link,
+        })
+      }
     }
 
-    if (this.state.video !== prevState.video) {
+    if (this.state.video !== prevState.video && this._isMounted) {
       this.setState({
         changeVideo: !this.state.changeVideo,
       })

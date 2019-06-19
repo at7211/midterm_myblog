@@ -81,6 +81,8 @@ const styles = {
 }
 
 class MainFullstack extends PureComponent {
+  _isMounted = false;
+
   constructor(props){
     super(props)
     this.state = {
@@ -90,11 +92,18 @@ class MainFullstack extends PureComponent {
   }
 
   activeType = () => {
+    this._isMounted = true;
     setTimeout(()=>{
-      this.setState({
-        type: true
-      })
+      if(this._isMounted){
+        this.setState({
+          type: true
+        })
+      }
     }, 2500)
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {
