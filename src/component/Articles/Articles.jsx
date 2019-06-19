@@ -28,6 +28,8 @@ const styles = {
 };
 
 class Articles extends PureComponent {
+  _isMounted = false;
+
   constructor(props){
     super(props)
     this.state = {
@@ -35,17 +37,23 @@ class Articles extends PureComponent {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
+    this._isMounted = true;
     this.node.scrollIntoView();
 
     fetch("http://localhost:3001/api/articles")
       .then(res => res.json())
       .then(data => {
-        console.log("data: ", data)
-        this.setState({
-          articles: data,
-        })
+        if(this._isMounted){
+          this.setState({
+            articles: data,
+          })
+        }
       })
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   postSelectedHandler = id => {

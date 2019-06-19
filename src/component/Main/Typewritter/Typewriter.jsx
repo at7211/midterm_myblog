@@ -11,7 +11,7 @@ const MagicOcean = [
 ];
 let index = 0;
 
-export default function Typewritter() {
+function Typewritter() {
   const [ magicName, setMagicName ] = useState(`Familier with these skills`);
   const intervalRef = useRef({});
   const name = useTypewriter(magicName);
@@ -33,3 +33,5 @@ export default function Typewritter() {
     </div>
   );
 }
+
+export default Typewritter

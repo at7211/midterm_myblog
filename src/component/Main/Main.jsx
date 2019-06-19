@@ -12,6 +12,8 @@ const setTimeClass =  {
 }
 
 class Main extends Component {
+  _isMounted = false;
+
   constructor(props){
     super(props)
     this.state = {
@@ -19,13 +21,20 @@ class Main extends Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
+    this._isMounted = true;
     this.node.scrollIntoView();
-    setTimeout(() => {
-      this.setState({
-        active: true
-      })
-    },3000)
+      setTimeout(() => {
+        if(this._isMounted) {
+          this.setState({
+            active: true
+          })
+        }
+      },3000)
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {

@@ -141,6 +141,8 @@ const styles = {
 };
 
 class Collection extends PureComponent {
+  _isMounted = false;
+
   constructor(props){
     super(props)
     this.state = {
@@ -151,15 +153,17 @@ class Collection extends PureComponent {
   }
 
   componentDidMount(){
+    this._isMounted = true;
     this.node.scrollIntoView();
 
     fetch("http://localhost:3001/api/videos")
       .then(res => res.json())
       .then(data => {
-        console.log("data: ", data)
-        this.setState({
-          items: data,
-        })
+        if(this._isMounted){
+          this.setState({
+            items: data,
+          })
+        }
       })
       .then(() => {
         this.setState({
@@ -189,6 +193,10 @@ class Collection extends PureComponent {
         changeVideo: !this.state.changeVideo,
       })
     }
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {
